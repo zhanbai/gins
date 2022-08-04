@@ -1,15 +1,15 @@
 package main
 
 import (
-    "fmt"
-    "gins/app/cmd"
-    "gins/bootstrap"
-    btsConig "gins/config"
-    "gins/pkg/config"
-    "gins/pkg/console"
-    "os"
+	"fmt"
+	"gins/app/cmd"
+	"gins/bootstrap"
+	btsConig "gins/config"
+	"gins/pkg/config"
+	"gins/pkg/console"
+	"os"
 
-    "github.com/spf13/cobra"
+	"github.com/spf13/cobra"
 )
 
 func init() {
@@ -48,6 +48,7 @@ func main() {
     rootCmd.AddCommand(
         cmd.CmdServe,
 		cmd.CmdKey,
+		cmd.CmdPlay,
     )
 
     // 配置默认运行 Web 服务
