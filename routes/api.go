@@ -2,6 +2,7 @@
 package routes
 
 import (
+	"gins/app/http/controllers/api/v1/auth"
 	"gins/app/http/middlewares"
 	"gins/pkg/config"
 	"net/http"
@@ -32,5 +33,16 @@ func RegisterAPIRoutes(r *gin.Engine) {
 				"Hello": "World!",
 			})
 		})
+
+		authGroup := v1.Group("/auth")
+		// 限流中间件：每小时限流，作为参考 Github API 每小时最多 60 个请求（根据 IP）
+		// 测试时，可以调高一点
+		authGroup.Use(middlewares.LimitIP("1000-H"))
+		{
+			// 发送验证码
+			vcc := new(auth.VerifyCodeController)
+			// 图片验证码
+			authGroup.POST("/verify-codes/captcha", middlewares.LimitPerRoute("50-H"), vcc.ShowCaptcha)
+		}
 	}
 }
