@@ -43,6 +43,8 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			vcc := new(auth.VerifyCodeController)
 			// 图片验证码
 			authGroup.POST("/verify-codes/captcha", middlewares.LimitPerRoute("50-H"), vcc.ShowCaptcha)
+			// 短信验证码
+			authGroup.POST("/verify-codes/phone", middlewares.LimitPerRoute("50-H"), vcc.SendUsingPhone)
 		}
 	}
 }
