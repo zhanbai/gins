@@ -12,5 +12,4 @@ var CmdPlay = &cobra.Command{
 
 // 调试完成后请记得清除测试代码
 func runPlay(cmd *cobra.Command, args []string) {
-
 }
