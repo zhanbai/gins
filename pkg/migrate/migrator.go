@@ -4,6 +4,7 @@ package migrate
 import (
 	"gins/pkg/console"
 	"gins/pkg/database"
+	"gins/pkg/file"
 	"io/ioutil"
 
 	"gorm.io/gorm"
