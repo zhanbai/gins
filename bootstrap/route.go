@@ -28,6 +28,8 @@ func registerGlobalMiddleWare(router *gin.Engine) {
 		middlewares.Logger(),
 		middlewares.Recovery(),
 		middlewares.ForceUA(),
+		middlewares.Accept(),
+		middlewares.Cors(),
 	)
 }
 
